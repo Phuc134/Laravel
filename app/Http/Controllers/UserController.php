@@ -16,16 +16,15 @@ class UserController extends Controller
                 [
                     'EC' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser->toArray()['data'],
-                    'LAST PAGE' => $listUser->toArray()['last_page'],
+                    'DATA' => $listUser,
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
                     'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -42,11 +41,11 @@ class UserController extends Controller
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
                     'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -57,9 +56,6 @@ class UserController extends Controller
     public function createCustomer(Request $request){
         try {
             $user = new User();
-            $request->validate([
-                'email' => 'email:rfc,dns'
-            ]);
             $user->role = "customer";
             $user->name = $request->name;
             $user->email = $request->email;
@@ -69,16 +65,17 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'EC' => 0,
+                    'USER' => $user,
+                    'ERROR CODE' => 0,
                     'MESSAGE' => 'CREATE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -88,20 +85,24 @@ class UserController extends Controller
         try {
             $id = $request->route('id');
             $user= User::find($id);
-            $user->update($request->all());
-
+            if ($request->has('name')) $user->name = $request->name;
+            if ($request->has('email')) $user->email = $request->email;
+            if ($request->has('phone')) $user->phone = $request->phone;
+            if ($request->has('username')) $user->username = $request->username;
+            $user->save();
             return response()->json(
                 [
-                    'EC'=> 0,
+                    'USER' => $user,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'UPDATE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -115,16 +116,16 @@ class UserController extends Controller
             if ($user !=null)$user->delete();
             return response()->json(
                 [
-                    'EC'=> 0,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'DELETE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -137,18 +138,17 @@ class UserController extends Controller
             $listUser = User::where('role', '=','staff')->paginate($pageNumber);
             return response()->json(
                 [
-                    'EC' => 0,
+                    'ERROR CODE' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser->toArray()['data'],
-                    'LAST PAGE' => $listUser->toArray()['last_page'],
+                    'DATA' => $listUser,
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -160,16 +160,16 @@ class UserController extends Controller
             $user= User::find($request->route('id'));
             return response()->json(
                 [
-                    'EC'=>0,
+                    'ERROR CODE'=>0,
                     'DATA' => $user,
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -189,16 +189,17 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'EC' => 0,
+                    'USER' => $user,
+                    'ERROR CODE' => 0,
                     'MESSAGE' => 'CREATE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -208,20 +209,26 @@ class UserController extends Controller
         try {
             $id = $request->route('id');
             $user= User::find($id);
-            $user->update($request->all());
-
+            $id = $request->route('id');
+            $user= User::find($id);
+            if ($request->has('name')) $user->name = $request->name;
+            if ($request->has('email')) $user->email = $request->email;
+            if ($request->has('phone')) $user->phone = $request->phone;
+            if ($request->has('username')) $user->username = $request->username;
+            $user->save();
             return response()->json(
                 [
-                    'EC'=> 0,
+                    'USER' => $user,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'UPDATE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -235,16 +242,16 @@ class UserController extends Controller
             if ($user !=null)$user->delete();
             return response()->json(
                 [
-                    'EC'=> 0,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'DELETE USER SUCCESS',
                 ]
             );
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> $e->getMessage(),
                 ]
             );
         }
@@ -258,24 +265,25 @@ class UserController extends Controller
             $password = $user[0]->password;
             if (Hash::check($request->password, $password)){
                 return response()->json([
-                    'EC'=> 0,
+                    'USER'=> $user,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'LOGIN SUCCESS',
                 ]);
 
             }
             else{
                 return response()->json([
-                    'EC'=> 0,
+                    'ERROR CODE'=> 0,
                     'MESSAGE'=> 'LOGIN FAIL',
                 ]);
             }
 
         }
-        catch (Exception $e){
+        catch (\Throwable $e){
             return response()->json(
                 [
-                    'EC'=> 1,
-                    'MESSAGE'=> $e,
+                    'ERROR CODE'=> 1,
+                    'MESSAGE'=> 'USERNAME DOES NOT EXIST',
                 ]
             );
         }

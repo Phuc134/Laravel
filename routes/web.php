@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/user/customer', [\App\Http\Controllers\UserController::class,'getListCustomer']);
-Route::get('/user/customer/getOne/{id}',[\App\Http\Controllers\UserController::class,'getOneCustomer']);
+Route::get('/user/customer/{id}',[\App\Http\Controllers\UserController::class,'getOneCustomer']);
 Route::post('/user/customer',[\App\Http\Controllers\UserController::class, 'createCustomer']);
 Route::put('/user/customer/{id}',[\App\Http\Controllers\UserController::class, 'updateCustomer']);
 Route::delete('/user/customer/{id}',[\App\Http\Controllers\UserController::class, 'deleteCustomer']);
 
 Route::get('/user/staff', [\App\Http\Controllers\UserController::class,'getListStaff']);
-Route::get('/user/staff/getOne/{id}',[\App\Http\Controllers\UserController::class,'getOneStaff']);
+Route::get('/user/staff/{id}',[\App\Http\Controllers\UserController::class,'getOneStaff']);
 Route::post('/user/staff',[\App\Http\Controllers\UserController::class, 'createStaff']);
 Route::put('/user/staff/{id}',[\App\Http\Controllers\UserController::class, 'updateStaff']);
 Route::delete('/user/staff/{id}',[\App\Http\Controllers\UserController::class, 'deleteStaff']);
