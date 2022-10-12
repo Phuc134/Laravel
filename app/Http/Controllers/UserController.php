@@ -16,7 +16,7 @@ class UserController extends Controller
                 [
                     'EC' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser->toArray()['data'],
+                    'DATAS' => $listUser->toArray()['data'],
                     'TOTAL' => $listUser->toArray()['total']
                 ]
             );
@@ -66,7 +66,7 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'USER' => $user,
+                    'DATA' => $user,
                     'ERROR CODE' => 0,
                     'MESSAGE' => 'CREATE USER SUCCESS',
                 ]
@@ -93,7 +93,7 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'USER' => $user,
+                    'DATA' => $user,
                     'ERROR CODE'=> 0,
                     'MESSAGE'=> 'UPDATE USER SUCCESS',
                 ]
@@ -141,7 +141,7 @@ class UserController extends Controller
                 [
                     'ERROR CODE' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser->toArray()['data'],
+                    'DATAS' => $listUser->toArray()['data'],
                     'TOTAL' => $listUser->toArray()['total']
                 ]
             );
@@ -191,7 +191,7 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'USER' => $user,
+                    'DATA' => $user,
                     'ERROR CODE' => 0,
                     'MESSAGE' => 'CREATE USER SUCCESS',
                 ]
@@ -220,7 +220,7 @@ class UserController extends Controller
             $user->save();
             return response()->json(
                 [
-                    'USER' => $user,
+                    'DATA' => $user,
                     'ERROR CODE'=> 0,
                     'MESSAGE'=> 'UPDATE USER SUCCESS',
                 ]
@@ -267,7 +267,7 @@ class UserController extends Controller
             $password = $user[0]->password;
             if (Hash::check($request->password, $password)){
                 return response()->json([
-                    'USER'=> $user,
+                    'DATA'=> $user,
                     'ERROR CODE'=> 0,
                     'MESSAGE'=> 'LOGIN SUCCESS',
                 ]);
