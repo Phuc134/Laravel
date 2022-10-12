@@ -16,7 +16,8 @@ class UserController extends Controller
                 [
                     'EC' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser,
+                    'DATA' => $listUser->toArray()['data'],
+                    'TOTAL' => $listUser->toArray()['total']
                 ]
             );
         }
@@ -140,7 +141,8 @@ class UserController extends Controller
                 [
                     'ERROR CODE' => 0,
                     'MESSAGE' => '',
-                    'DATA' => $listUser,
+                    'DATA' => $listUser->toArray()['data'],
+                    'TOTAL' => $listUser->toArray()['total']
                 ]
             );
         }
