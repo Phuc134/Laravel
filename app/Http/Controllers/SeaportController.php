@@ -7,6 +7,47 @@ use Illuminate\Http\Request;
 
 class SeaportController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/seaport",
+     *     tags={"seaport"},
+     *     description="Return a list seaport",
+     *     operationId="getListSeaport",
+     *     @OA\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="page number",
+     *     ),
+     *     @OA\Parameter(
+     *          name="pagesize",
+     *          in="query",
+     *          description="number of records in page",
+     *     ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
+
     public function getListSeaport(Request $request){
         try {
             $pageNumber= (int)$request->pagesize;
@@ -29,6 +70,61 @@ class SeaportController extends Controller
             );
         }
     }
+    /**
+     * @OA\Post (
+     *      path="/seaport",
+     *      tags={"seaport"},
+     *      description="Create a seaport",
+     *      operationId="createSeaport",
+     *      @OA\Parameter (
+     *          name="name",
+     *          in="query",
+     *          description="name of seaport",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *     @OA\Parameter (
+     *          name="code",
+     *          in="query",
+     *          description="code of seaport",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *     @OA\Parameter (
+     *          name="max_draft",
+     *          in="query",
+     *          description="max_draft of seaport",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
+
     public function createSeaport(Request $request){
         try {
             $Seaport = new Seaport();
@@ -53,6 +149,70 @@ class SeaportController extends Controller
             );
         }
     }
+    /**
+     * @OA\Put(
+     *      path="/seaport/{id}",
+     *      tags={"seaport"},
+     *      description="Update a seaport",
+     *      operationId="updateSeaport",
+     *      @OA\Parameter (
+     *          name="name",
+     *          in="query",
+     *          description="name need update",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *     @OA\Parameter (
+     *          name="code",
+     *          in="query",
+     *          description="code need update",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *     @OA\Parameter (
+     *          name="max_draft",
+     *          in="query",
+     *          description="max_draft need update",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of seaport to update",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
+
     public function updateSeaport(Request $request){
         try {
             $id = $request->route('id');
@@ -78,6 +238,46 @@ class SeaportController extends Controller
             );
         }
     }
+    /**
+     * @OA\Delete (
+     *      path="/seaport/{id}",
+     *      tags={"seaport"},
+     *      description="Delete a seaport",
+     *      operationId="deleteSeaport",
+     *      @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of seaport to delete",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
+
     public function deleteSeaport(Request $request){
         try {
             $id = $request->route('id');

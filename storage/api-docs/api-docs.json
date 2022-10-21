@@ -12,9 +12,1011 @@
                 ],
                 "description": "Return a list category",
                 "operationId": "getListCategory",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number"
+                    },
+                    {
+                        "name": "pagesize",
+                        "in": "query",
+                        "description": "number of records in page"
+                    }
+                ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Create a category",
+                "operationId": "createCategory",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Update a category",
+                "operationId": "updateCategory",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of category to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Delete a category",
+                "operationId": "deleteCategory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of category to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/company": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Return a list company",
+                "operationId": "getListCompany",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number"
+                    },
+                    {
+                        "name": "pagesize",
+                        "in": "query",
+                        "description": "number of records in page"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Create a company",
+                "operationId": "createCompany",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of company",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "address of company",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone of company",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fax",
+                        "in": "query",
+                        "description": "fax of company",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/company/{id}": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Update a company",
+                "operationId": "updateCompany",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "address need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fax",
+                        "in": "query",
+                        "description": "fax need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of category to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Delete a company",
+                "operationId": "deleteCompany",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of company to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/seaport": {
+            "get": {
+                "tags": [
+                    "seaport"
+                ],
+                "description": "Return a list seaport",
+                "operationId": "getListSeaport",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number"
+                    },
+                    {
+                        "name": "pagesize",
+                        "in": "query",
+                        "description": "number of records in page"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "seaport"
+                ],
+                "description": "Create a seaport",
+                "operationId": "createSeaport",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of seaport",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "code of seaport",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "max_draft",
+                        "in": "query",
+                        "description": "max_draft of seaport",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/seaport/{id}": {
+            "put": {
+                "tags": [
+                    "seaport"
+                ],
+                "description": "Update a seaport",
+                "operationId": "updateSeaport",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "code need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "max_draft",
+                        "in": "query",
+                        "description": "max_draft need update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of seaport to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "seaport"
+                ],
+                "description": "Delete a seaport",
+                "operationId": "deleteSeaport",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of seaport to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/customer": {
+            "get": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "Return a list customer",
+                "operationId": "getListCustomer",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number"
+                    },
+                    {
+                        "name": "pagesize",
+                        "in": "query",
+                        "description": "number of records in page"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "Create a customer",
+                "operationId": "createCustomer",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "username of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/customer/{id}": {
+            "get": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "Return one customer",
+                "operationId": "getOneCustomer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of customer need get",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "Update a customer",
+                "operationId": "updateCustomer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "username of customer",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "customer"
+                ],
+                "description": "Delete a customer",
+                "operationId": "DeleteCustomer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/staff": {
+            "get": {
+                "tags": [
+                    "staff"
+                ],
+                "description": "Return a list staff",
+                "operationId": "getListStaff",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number"
+                    },
+                    {
+                        "name": "pagesize",
+                        "in": "query",
+                        "description": "number of records in page"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "staff"
+                ],
+                "description": "Create a staff",
+                "operationId": "createStaff",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "username of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/staff/{id}": {
+            "get": {
+                "tags": [
+                    "staff"
+                ],
+                "description": "Return one staff",
+                "operationId": "getOneStaff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of staff need get",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "staff"
+                ],
+                "description": "Update a staff",
+                "operationId": "updateStaff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of staff",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "phone of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "username of staff",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "staff"
+                ],
+                "description": "Delete a staff",
+                "operationId": "DeleteStaff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of staff",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
             }

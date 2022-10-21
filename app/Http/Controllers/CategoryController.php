@@ -13,13 +13,38 @@ class CategoryController extends Controller
      *     tags={"category"},
      *     description="Return a list category",
      *     operationId="getListCategory",
-     *     @OA\Response(
-     *          response="200",
+     *     @OA\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="page number",
+     *     ),
+     *     @OA\Parameter(
+     *          name="pagesize",
+     *          in="query",
+     *          description="number of records in page",
+     *     ),
+     *      @OA\Response(
+     *          response="201",
      *          description="successful operation",
-     *     )
-     *     @OA\Response(
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
      *
-     *     )
+     *
      * )
      */
     public function getListCategory(Request $request){
@@ -45,6 +70,44 @@ class CategoryController extends Controller
             );
         }
     }
+    /**
+     * @OA\Post(
+     *      path="/category",
+     *      tags={"category"},
+     *      description="Create a category",
+     *      operationId="createCategory",
+     *      @OA\Parameter (
+     *          name="name",
+     *          in="query",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+    */
     public function createCategory(Request $request){
         try {
             $category = new Category();
@@ -67,6 +130,53 @@ class CategoryController extends Controller
             );
         }
     }
+    /**
+     * @OA\Put(
+     *      path="/category/{id}",
+     *      tags={"category"},
+     *      description="Update a category",
+     *      operationId="updateCategory",
+     *      @OA\Parameter (
+     *          name="name",
+     *          in="query",
+     *          description="name need update",
+     *          @OA\Schema (
+     *              type="string",
+     *          )
+     *      ),
+     *      @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of category to update",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
     public function updateCategory(Request $request){
         try {
             $id = $request->route('id');
@@ -90,6 +200,45 @@ class CategoryController extends Controller
             );
         }
     }
+    /**
+     * @OA\Delete(
+     *      path="/category/{id}",
+     *      tags={"category"},
+     *      description="Delete a category",
+     *      operationId="deleteCategory",
+     *      @OA\Parameter (
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of category to delete",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="201",
+     *          description="successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="not found"
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *
+     *
+     * )
+     */
     public function deleteCategory(Request $request){
         try {
             $id = $request->route('id');
