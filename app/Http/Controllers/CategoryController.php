@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use OpenApi\Annotations as OA;
 class CategoryController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/projects",
+     *     @OA\Response(response="200", description="Display a listing of projects.")
+     * )
+     */
     public function getListCategory(Request $request){
+
         try {
             $pageNumber= (int)$request->pagesize;
             $listCategory = Category::paginate($pageNumber);
