@@ -5,12 +5,16 @@
         "version": "0.1"
     },
     "paths": {
-        "/projects": {
+        "/category": {
             "get": {
-                "operationId": "0b62dd085e1cacb9c8e37beb124e96c3",
+                "tags": [
+                    "category"
+                ],
+                "description": "Return a list category",
+                "operationId": "getListCategory",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of projects."
+                        "description": "successful operation"
                     }
                 }
             }

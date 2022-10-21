@@ -9,8 +9,17 @@ class CategoryController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/projects",
-     *     @OA\Response(response="200", description="Display a listing of projects.")
+     *     path="/category",
+     *     tags={"category"},
+     *     description="Return a list category",
+     *     operationId="getListCategory",
+     *     @OA\Response(
+     *          response="200",
+     *          description="successful operation",
+     *     )
+     *     @OA\Response(
+     *
+     *     )
      * )
      */
     public function getListCategory(Request $request){
