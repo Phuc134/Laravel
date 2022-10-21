@@ -59,9 +59,9 @@ class CompanyController extends Controller
             $id = $request->route('id');
             $company= Company::find($id);
             if ($request->has('name')) $company->name = $request->name;
-            if ($request->has('address')) $company->name = $request->address;
-            if ($request->has('phone')) $company->name = $request->phone;
-            if ($request->has('fax')) $company->name = $request->fax;
+            if ($request->has('address')) $company->address = $request->address;
+            if ($request->has('phone')) $company->phone = $request->phone;
+            if ($request->has('fax')) $company->fax = $request->fax;
             $company->save();
             return response()->json(
                 [
