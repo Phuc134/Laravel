@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
 class CategoryController extends Controller
@@ -48,7 +49,6 @@ class CategoryController extends Controller
      * )
      */
     public function getListCategory(Request $request){
-
         try {
             $pageNumber= (int)$request->pagesize;
             $listCategory = Category::paginate($pageNumber);
