@@ -52,6 +52,7 @@ class CategoryController extends Controller
         try {
             $pageNumber= (int)$request->pagesize;
             $listCategory = Category::paginate($pageNumber);
+            dd($listCategory);
             return response()->json(
                 [
                     'errorCode' => 0,

@@ -13,34 +13,69 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //CRUD Cus
-Route::get('/user/customer', [\App\Http\Controllers\UserController::class,'getListCustomer']);
-Route::get('/user/customer/{id}',[\App\Http\Controllers\UserController::class,'getOneCustomer']);
-Route::post('/user/customer',[\App\Http\Controllers\UserController::class, 'createCustomer']);
-Route::put('/user/customer/{id}',[\App\Http\Controllers\UserController::class, 'updateCustomer']);
-Route::delete('/user/customer/{id}',[\App\Http\Controllers\UserController::class, 'deleteCustomer']);
+Route::prefix('/user/customer')->group(function (){
+    Route::get('', [\App\Http\Controllers\UserController::class,'getListCustomer']);
+    Route::get('{id}',[\App\Http\Controllers\UserController::class,'getOneCustomer']);
+    Route::post('',[\App\Http\Controllers\UserController::class, 'createCustomer']);
+    Route::put('{id}',[\App\Http\Controllers\UserController::class, 'updateCustomer']);
+    Route::delete('{id}',[\App\Http\Controllers\UserController::class, 'deleteCustomer']);});
+
 //CRUD Staff
-Route::get('/user/staff', [\App\Http\Controllers\UserController::class,'getListStaff']);
-Route::get('/user/staff/{id}',[\App\Http\Controllers\UserController::class,'getOneStaff']);
-Route::post('/user/staff',[\App\Http\Controllers\UserController::class, 'createStaff']);
-Route::put('/user/staff/{id}',[\App\Http\Controllers\UserController::class, 'updateStaff']);
-Route::delete('/user/staff/{id}',[\App\Http\Controllers\UserController::class, 'deleteStaff']);
+Route::prefix('/user/staff')->group(function () {
+    Route::get('', [\App\Http\Controllers\UserController::class,'getListStaff']);
+    Route::get('{id}',[\App\Http\Controllers\UserController::class,'getOneStaff']);
+    Route::post('',[\App\Http\Controllers\UserController::class, 'createStaff']);
+    Route::put('{id}',[\App\Http\Controllers\UserController::class, 'updateStaff']);
+    Route::delete('{id}',[\App\Http\Controllers\UserController::class, 'deleteStaff']);
+});
+
 //Auth
-Route::post('/user/login',[\App\Http\Controllers\UserController::class,'login']);
+
 //CRUD Seaport
-Route::get('/seaport',[\App\Http\Controllers\SeaportController::class,'getListSeaport']);
-Route::post('/seaport',[\App\Http\Controllers\SeaportController::class,'createSeaport']);
-Route::put('/seaport/{id}',[\App\Http\Controllers\SeaportController::class,'updateSeaport']);
-Route::delete('/seaport/{id}',[\App\Http\Controllers\SeaportController::class,'deleteSeaport']);
+Route::prefix('/seaport')->group(function () {
+    Route::get('',[\App\Http\Controllers\SeaportController::class,'getListSeaport']);
+    Route::post('',[\App\Http\Controllers\SeaportController::class,'createSeaport']);
+    Route::put('{id}',[\App\Http\Controllers\SeaportController::class,'updateSeaport']);
+    Route::delete('{id}',[\App\Http\Controllers\SeaportController::class,'deleteSeaport']);
+});
 
 //CRUD Company
-Route::get('/company',[\App\Http\Controllers\CompanyController::class,'getListCompany']);
-Route::post('/company',[\App\Http\Controllers\CompanyController::class,'createCompany']);
-Route::put('/company/{id}',[\App\Http\Controllers\CompanyController::class,'updateCompany']);
-Route::delete('/company/{id}',[\App\Http\Controllers\CompanyController::class,'deleteCompany']);
+Route::prefix('/company')->group(function () {
+    Route::get('',[\App\Http\Controllers\CompanyController::class,'getListCompany']);
+    Route::post('',[\App\Http\Controllers\CompanyController::class,'createCompany']);
+    Route::put('{id}',[\App\Http\Controllers\CompanyController::class,'updateCompany']);
+    Route::delete('{id}',[\App\Http\Controllers\CompanyController::class,'deleteCompany']);
+});
 
 //CRUD Category
-Route::get('/category',[\App\Http\Controllers\CategoryController::class,'getListCategory']);
-Route::post('/category',[\App\Http\Controllers\CategoryController::class,'createCategory']);
-Route::put('/category/{id}',[\App\Http\Controllers\CategoryController::class,'updateCategory']);
-Route::delete('/category/{id}',[\App\Http\Controllers\CategoryController::class,'deleteCategory']);
+Route::prefix('/category')->group(function () {
+    Route::get('',[\App\Http\Controllers\CategoryController::class,'getListCategory']);
+    Route::post('',[\App\Http\Controllers\CategoryController::class,'createCategory']);
+    Route::put('{id}',[\App\Http\Controllers\CategoryController::class,'updateCategory']);
+    Route::delete('{id}',[\App\Http\Controllers\CategoryController::class,'deleteCategory']);
+});
 
+//CRUD VESSEL
+Route::prefix('/vessel')->group(function () {
+    Route::post('',[\App\Http\Controllers\VesselController::class,'createVessel']);
+    Route::get('',[\App\Http\Controllers\VesselController::class,'getListVessel']);
+    Route::put('{id}',[\App\Http\Controllers\VesselController::class,'updateVessel']);
+    Route::delete('{id}',[\App\Http\Controllers\VesselController::class,'deleteVessel']);
+});
+
+
+//CRUD SCHEDULE
+Route::prefix('/schedule')->group(function () {
+    Route::post('',[\App\Http\Controllers\ScheduleController::class,'createSchedule']);
+    Route::get('{idVessel}',[\App\Http\Controllers\ScheduleController::class,'getScheduleByVessel']);
+    Route::put('{id}',[\App\Http\Controllers\ScheduleController::class,'updateSchedule']);
+    Route::delete('{id}',[\App\Http\Controllers\ScheduleController::class,'deleteSchedule']);
+});
+
+//AUTH
+Route::prefix('auth')->group(function () {
+    Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
+    Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
+});

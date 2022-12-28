@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Mockery\Exception;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+       // $this->middleware('auth:api');
+    }
     /**
      * @OA\Get(
      *     path="/user/customer",
@@ -434,6 +440,7 @@ class UserController extends Controller
         try {
             $pageNumber= (int)$request->pagesize;
             $listUser = User::where('role', '=','staff')->paginate($pageNumber);
+            dd($listUser);
             return response()->json(
                 [
                     'errorCode' => 0,
@@ -773,34 +780,4 @@ class UserController extends Controller
 
     }
 
-    public function login(Request $request){
-        try{
-            $username = $request->username;
-            $user = User::where('username', $username)->get();
-            $password = $user[0]->password;
-            if (Hash::check($request->password, $password)){
-                return response()->json([
-                    'data'=> $user,
-                    'errorCode'=> 0,
-                    'message'=> 'LOGIN SUCCESS',
-                ]);
-
-            }
-            else{
-                return response()->json([
-                    'errorCode'=> 0,
-                    'message'=> 'LOGIN FAIL',
-                ]);
-            }
-
-        }
-        catch (\Throwable $e){
-            return response()->json(
-                [
-                    'errorCode'=> 1,
-                    'message'=> 'USERNAME DOES NOT EXIST',
-                ]
-            );
-        }
-    }
 }

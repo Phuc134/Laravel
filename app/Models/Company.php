@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+    public function vessels(){
+        return $this->hasMany(Vessel::class);
+    }
 }
